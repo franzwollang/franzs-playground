@@ -1,4 +1,4 @@
-//flex_slice is a generalized version of vanilla Array.prototype.slice(); it preserves all behavior of vanilla slice if integer start and end bounds are passed. However, it also allows passing in binary test functions for the start and/or end bounds that allow for dynamic selection of the returned sub-array.
+//flex_slice is a generalized version of vanilla Array.prototype.slice(); it preserves all behavior of vanilla slice if constant integer start and end indices are passed. However, it also allows passing in binary test functions for the start and/or end bounds that allow for dynamic selection of the returned sub-array.
 
 const flex_slice = function(start, end, data) {
 
@@ -14,7 +14,7 @@ const flex_slice = function(start, end, data) {
   let start_index, start_func, end_bound, end_func;
   let start_guard = false;
 
-  //identify type of start parameter; default to starting at zero; preserve negative index behavior of standard array.slice()
+  //identify type of start parameter; default to starting at zero; preserve negative index behavior of standard Array.prototype.slice()
   if ( typeof(start) == "number" ) {
     if (start < 0) {
       start = length + 1 + start;
@@ -31,7 +31,7 @@ const flex_slice = function(start, end, data) {
     mode[starting] = fixed;
   }
 
-  //identify type of end parameter; default to end at length; preserve negative index behavior of standard array.slice()
+  //identify type of end parameter; default to end at length; preserve negative index behavior of standard Array.prototype.slice()
   if ( typeof(end) == "number" ) {
     if (end < 0) {
       end = length - 1 + end;
