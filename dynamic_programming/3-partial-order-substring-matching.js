@@ -11,9 +11,14 @@
 
 
 //only works for number of arrays equal to 2; first string is the query string, second string is the test string
-function substringMatch(...args) {
+function substringMatch(mode, ...args) {
 
-  let matches = [];
+  if( mode == 'large') {
+    var matches = 0;
+  }
+  else {
+    var matches = [];
+  }
 
   function recursiveMatch(
     str1,
@@ -24,7 +29,12 @@ function substringMatch(...args) {
   ) {
 
     if( str1Ind > str1.length-1 ) {
-      matches.push(candidate);
+      if( mode == 'large') {
+        matches+=1;
+      }
+      else {
+        matches.push(candidate);
+      }
       return;
     }
 
@@ -70,20 +80,25 @@ function substringMatch(...args) {
 
 }
 
-console.log(`\nThe answer for ('tpwx','tpwx') is ` + JSON.stringify(substringMatch('tpwx','tpwx')) );
+console.log(`\nThe answer for ('tpwx','tpwx') is ` + JSON.stringify(substringMatch('small','tpwx','tpwx')) );
 //[[0,1,2,3]]
 
-console.log(`\nThe answer for ('tpwx','tpwxapplebwananacwherrypeachx') is ` + JSON.stringify(substringMatch('tpwx','tpwxapplebwananacwherrypeachx')) );
+console.log(`\nThe answer for ('tpwx','tpwxapplebwananacwherrypeachx') is ` + JSON.stringify(substringMatch('small','tpwx','tpwxapplebwananacwherrypeachx')) );
 //[[0,1,2,3],[0,1,2,28],[0,1,10,28],[0,1,17,28],[0,5,10,28],[0,5,17,28],[0,6,10,28],[0,6,17,28]]
 
-console.log(`\nThe answer for ('tpwx','teflpawmvwsebx') is ` + JSON.stringify(substringMatch('tpwx','teflpawmvwsebx')) );
+console.log(`\nThe answer for ('tpwx','teflpawmvwsebx') is ` + JSON.stringify(substringMatch('small','tpwx','teflpawmvwsebx')) );
 //[[0,4,6,13],[0,4,9,13]]
 
-console.log(`\nThe answer for ('xtpwx','xteflpawmvwsebx') is ` + JSON.stringify(substringMatch('xtpwx','xteflpawmvwsebx')) );
+console.log(`\nThe answer for ('xtpwx','xteflpawmvwsebx') is ` + JSON.stringify(substringMatch('small','xtpwx','xteflpawmvwsebx')) );
 //
 
-console.log(`\nThe answer for ('aaa','aaaaaaa') is ` + JSON.stringify(substringMatch('aaa','aaaaaaa')) );
+console.log(`\nThe answer for ('aaa','aaaaaaa') is ` + JSON.stringify(substringMatch('small','aaa','aaaaaaa')) );
 //[[0,1,2],[0,1,3],[0,1,4],[0,1,5],[0,1,6],[0,2,3],[0,2,4],[0,2,5],[0,2,6],[0,3,4],[0,3,5],[0,3,6],[0,4,5],[0,4,6],[0,5,6],[1,2,3],[1,2,4],[1,2,5],[1,2,6],[1,3,4],[1,3,5],[1,3,6],[1,4,5],[1,4,6],[1,5,6],[2,3,4],[2,3,5],[2,3,6],[2,4,5],[2,4,6],[2,5,6],[3,4,5],[3,4,6],[3,5,6],[4,5,6]]
 
-console.log(`\nThe answer for ('aaaaaaa','aaaaaaaaaaaaaaaa') contains ` + substringMatch('aaaaaaa','aaaaaaaaaaaaaaaa').length + ' matches');
+console.log(`\nThe answer for ('aaaaaaa','aaaaaaaaaaaaaaaa') contains ` + substringMatch('large','aaaaaaa','aaaaaaaaaaaaaaaa') + ' matches');
 //11440 matches
+
+//console.log(`\nThe answer for ('aaaaaaaaaa','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') contains ` + substringMatch('large','aaaaaaaaaa','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') + ' matches');
+//254 186 856 matches
+
+//While this algorithm is worst-case exponential in n, it is memory efficient enough to allow for the computation of partial order substrings over large m.
