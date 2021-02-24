@@ -1,3 +1,4 @@
+//problem explanation
 //given two strings, find if the first string matchs one or more times as a (partially ordered) substring of the second string and return the matches.
 
 //For string1 = n and string2 = m, n>=2, and n_1 =/= n_2: an example pathological scenario is entire string2 is the first character of string1 repeated m times. This will lead to looping over string2 m(m+1)/2 times or o(m^2) time complexity, even though there are obviously no possible matches.
@@ -6,7 +7,7 @@
 
 //This technique would require creating a dictionary of arrays with total elements across all arrays equal to m, in time o(m). This makes the additional space complexity on top of the size of the input arrays due to the data structure equal to o(m).
 
-//The time complexity would depend on how much overlap of the partial matches there is --and thus the average branching factor of the combined tree of the recursive call paths traversed depth first by the algorithm (upper bounded by m)--, along with the average length of partial matches corresponding to leafs of the recursion tree. In the worst case, the average branching factor is a large fraction of m and the average length of leaf partial matches is a large fraction of n; this would create a recursion call tree with o(m^n) nodes to be traversed and in expectation o( log_m(n) ) additional memory for the maximum size of the call stack.
+//The time complexity would depend on how much overlap of the partial matches there is --and thus the average branching factor of the imagined combined tree of all the recursive call paths traversed depth first by the algorithm (upper bounded by m)--, along with the average length of partial matches corresponding to leafs of the recursion tree. In the worst case, the average branching factor is a large fraction of m and the average length of leaf (terminating) partial matches is a large fraction of n; this would create an imagined recursion call tree with o(m^n) nodes to be traversed and in expectation o( log_m(n) ) additional memory for the maximum size of the call stack.
 
 
 //only works for number of arrays equal to 2; first string is the query string, second string is the test string
