@@ -103,4 +103,4 @@ console.log(`\nThe answer for ('aaaaaaa','aaaaaaaaaaaaaaaa') contains ` + substr
 
 //While this algorithm is worst-case exponential in n, it is memory efficient enough to allow for the computation of partial order substrings over large m.
 
-//It is not possible to improve the time complexity of this algorithm using deterministic calculations (due to the lack of constraints imposed when allowing the query string to be partially ordered). Could it be improved using statistical techniques? I believe statistical techniques could improve the average time complexity, but I doubt they would be able to improve the worst-case bounds.
+//It is not possible to improve the time complexity of this algorithm using deterministic calculations (due to the lack of constraints imposed when allowing the query string to be a partially ordered substring of the match string). Could it be improved using statistical techniques? I believe statistical techniques could improve the average time complexity, but I doubt they would be able to improve the worst-case bounds.
