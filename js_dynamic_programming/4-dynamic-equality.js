@@ -12,7 +12,7 @@ function dynamicEquality(n){
   for(smaller = sqrtUPB; smaller >= 1; smaller-- ){
     larger = (upperBound - smaller)/(smaller + 1);
     if (larger < n){
-      if (m.abs(larger - m.round(larger)) == 0){
+      if (larger % 1 == 0){
         results.push([smaller, larger]);
       }
     }
@@ -25,7 +25,7 @@ function dynamicEquality(n){
 }
 
 /*
-Complexity of o(n) for general problem of finding such (a,b)
+Complexity of o(n) for general problem of finding any such (a,b)
 
 Complexity reduced by a small constant when given constraint that a,b < n
 small constant factor is sqrt( ( 3*sqrt(2) - 4 ) / ( 2*sqrt(2) ) )
