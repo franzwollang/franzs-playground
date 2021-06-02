@@ -1,6 +1,14 @@
 //flex_slice is a generalized version of vanilla Array.prototype.slice(); it preserves all behavior of vanilla slice if constant integer start and end indices are passed. However, it also allows passing in binary test functions for the start and/or end bounds that allow for dynamic selection of the returned sub-array.
 
-const flex_slice = function(start, end, data) {
+const flex_slice = function(data, start=null, end=null) {
+
+  //defaults
+  if( !start ){
+    start = 0;
+  }
+  if( !end ){
+    end = data.length;
+  }
 
   //no magic numbers
   const starting = 0;
