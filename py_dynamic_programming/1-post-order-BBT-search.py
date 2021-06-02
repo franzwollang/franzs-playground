@@ -56,4 +56,4 @@ print( solution(5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) )
 # --> [3, 3, 7, 6, 6, 7, 15, 10, 10, 14, 13, 13, 14, 15, 31]
 
 
-# For any given query label, the memory complexity of this implementation is o(1). The time complexity strictly upper-bounded by logN since the maximum number of steps is a single path from the root to a leaf node which for a balanced binary tree is strictly of length logN; the average time complexity is rather lower since asymptotically half of all nodes in the tree are not leaf nodes, and thus the number of steps is smaller for them, plus there are optimizations like checking the right boundary range.
+# For any given query label, the memory complexity of this implementation is o(1). The time complexity is strictly upper-bounded by logN since the maximum number of steps is a single path from the root to a leaf node which for a balanced binary tree is strictly of length logN; the average time complexity is rather lower since asymptotically half of all nodes in the tree are not leaf nodes, and thus the number of steps is smaller for them, plus there are optimizations like checking the right boundary range.

@@ -154,13 +154,12 @@ console.log('(1, 2) = ' + branchingRecursion(1, 2) ); //1
 console.log('(2, 2) = ' + branchingRecursion(2, 2) ); //2
 console.log('(2, 3) = ' + branchingRecursion(2, 3) ); //3
 console.log('(3, 3) = ' + branchingRecursion(3, 3) ); //6
-console.log('(4, 3) = ' + branchingRecursion(4, 3) ); //
+console.log('(4, 3) = ' + branchingRecursion(4, 3) ); //6
 console.log('(3, 5) = ' + branchingRecursion(3, 5) ); //15
 console.log('(6, 6) = ' + branchingRecursion(6, 6) ); //252
 console.log('(5, 6) = ' + branchingRecursion(5, 6) ); //126
 console.log('(5, 9) = ' + branchingRecursion(5, 9) ); //495
 console.log('(4, 11) = ' + branchingRecursion(4, 11) ); //286
-console.log('(10, 11) = ' + branchingRecursion(10, 11) ); //286
 console.log('(10, 15) = ' + branchingRecursion(10, 15) ); //817190
 
 console.log("Tests using optimal memoization")
@@ -175,7 +174,6 @@ console.log('(6, 6) = ' + optimalMemoize(6, 6) ); //252
 console.log('(5, 6) = ' + optimalMemoize(5, 6) ); //126
 console.log('(5, 9) = ' + optimalMemoize(5, 9) ); //495
 console.log('(4, 11) = ' + optimalMemoize(4, 11) ); //286
-console.log('(10, 11) = ' + optimalMemoize(10, 11) ); //
 console.log('(10, 15) = ' + optimalMemoize(10, 15) ); //817190
 
 console.log("Very large tests using optimal memoization")
