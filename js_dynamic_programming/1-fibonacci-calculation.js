@@ -26,7 +26,7 @@ console.log( loopFib(10) );
 console.log( loopFib(20) );
 
 
-//single recursive call that accesses both previous terms, or recurses until it can access both previous terms, then pops back up the stack; complexity is o(n) time and o(n) space since it uses 'n' stack frames, unless you have tail recursion in which case it is o(1) space. Uses a declarative style and only passes values between function calls -- functional approach.
+//single recursive call that accesses both previous terms, or recurses until it can access both previous terms, then pops back up the stack; complexity is o(n) time and o(n) space since it uses 'n' stack frames.
 
 function recursiveFib(nth_element, previous_terms = [1,1,3]) {
   if (nth_element < 3) {
