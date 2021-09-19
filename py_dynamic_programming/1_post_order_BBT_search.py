@@ -36,7 +36,7 @@ def recursive_search(h, root, query_node, depth=0):
             if query_node >= left_boundary_node-(level-1): # check right boundary range
                 return query_node+1
             else: # recurse on sub-tree
-                return query_parent(h, left_boundary_node-1, query_node, depth+(subtree_height-level)+1)
+                return recursive_search(h, left_boundary_node-1, query_node, depth+(subtree_height-level)+1)
         else:
             continue
 
@@ -49,10 +49,10 @@ def query_parents(h, q):
     return [recursive_search(h, root_node, query_node) for query_node in q]
 
 
-print( solution(3, [1, 2, 4, 5, 3, 6, 7]) )
+print( query_parents(3, [1, 2, 4, 5, 3, 6, 7]) )
 # --> [3, 3, 6, 6, 7, 7, -1]
 
-print( solution(5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) )
+print( query_parents(5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) )
 # --> [3, 3, 7, 6, 6, 7, 15, 10, 10, 14, 13, 13, 14, 15, 31]
 
 
