@@ -10,6 +10,7 @@ async function promisePipe( ...asyncTasks) {
   )
   .catch( (err) => {
         console.log(err);
+        console.log(asyncTasks)
         throw err;
     })
 }
