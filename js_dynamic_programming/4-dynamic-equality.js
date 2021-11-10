@@ -4,8 +4,12 @@ When given a number 'n', return all pairs (a,b) such that a*b = sumFromOnetoN - 
 
 const m = Math
 
+function gaussSum (n){
+  return n*(n+1)/2
+}
+
 function dynamicEquality(n){
-  const upperBound = n*(n+1)/2;
+  const upperBound = gaussSum(n);
   const sqrtUPB = m.floor(m.sqrt(upperBound));
   const results = [];
 
