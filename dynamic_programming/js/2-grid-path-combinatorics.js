@@ -1,11 +1,20 @@
-//problem explanation
-//Given a two-dimensional array (grid), find how many unique possible paths there are between one corner and the other of the grid. Movement across the grid consists of incrementing (variously decrementing) one of the two indices.
+/////////////////////////////
+//// Problem Explanation ////
+/////////////////////////////
 
-//base case analysis
-//For grid of size (1,1), there is only one path (to maintain consistency when reducing to subproblems). A grid for which either dimension is zero will have zero paths. A grid for which either dimension is one will have only one path.
-//The number of paths for a grid of size (n,m) is equal to the sum of the paths of the two subproblems (n-1,m) and (n,m-1).
+// Given a two-dimensional array (grid), find how many unique possible paths there are between one corner and the other of the grid. Movement across the grid consists of incrementing (variously decrementing) one of the two indices.
 
-//asymmetric case analysis
+//////////////////////
+//// Pre-Analysis ////
+//////////////////////
+
+// base case analysis
+
+// For grid of size (1,1), there is only one path (to maintain consistency when reducing to subproblems). A grid for which either dimension is zero will have zero paths. A grid for which either dimension is one will have only one path.
+// The number of paths for a grid of size (n,m) is equal to the sum of the paths of the two subproblems (n-1,m) and (n,m-1).
+
+// asymmetric case analysis
+
 // 5,9
 // 5,8   5,7   5,6   5,5
 
@@ -62,12 +71,15 @@
 // So (big dim)-(small dim) == diff == number of elements of (smallDim - 1),(bigDim) that are required by (smallDim),(bigDim) before reaching symmetric case
 // (bigDim)-(diff-1) == (start) for sequence (smallDim-1),(start) to (smallDim-1),(start+1) ... to (smallDim-1),(bigDim) required by (smallDim),(bigDim) in order to reach a symmetric case
 
-//Symmetric cases can be calculated as two times the value of one of the sub-problems because of the symmetry of the subproblems.
-//Choose the subproblem that decrements the smallDim
-//For 5,5, this would be 4,5
-//4,5 is 3,5 + 4,4
-//Thus symmetric cases can be reduced to evaluating 2*( (dim1-2, dim2) + (dim1-1,dim2-1) ) where (dim1-1,dim2-1) is the next lower symmetric case.
+// Symmetric cases can be calculated as two times the value of one of the sub-problems because of the symmetry of the subproblems.
+// Choose the subproblem that decrements the smallDim
+// For 5,5, this would be 4,5
+// 4,5 is 3,5 + 4,4
+// Thus symmetric cases can be reduced to evaluating 2*( (dim1-2, dim2) + (dim1-1,dim2-1) ) where (dim1-1,dim2-1) is the next lower symmetric case.
 
+//////////////////
+//// Solution ////
+//////////////////
 
 function branchingRecursion(a, b) {
   if (a == 0 || b == 0 ) {
@@ -148,6 +160,10 @@ function optimalMemoize(dim1, dim2) {
   };
 }
 
+///////////////
+//// Tests ////
+///////////////
+
 console.log("Tests using inefficient branching recursion")
 console.log('(0, 4) = ' + branchingRecursion(0, 4) ); //0
 console.log('(1, 2) = ' + branchingRecursion(1, 2) ); //1
@@ -181,9 +197,13 @@ console.log('(18, 18) = ' + optimalMemoize(18, 18) ) //2333606220
 console.log('(14, 27) = ' + optimalMemoize(14, 27) ) //8122425444
 console.log('(42, 41) = ' + optimalMemoize(42, 41) ) //2.1239229042439588e+23
 
-//For grid (n,m) where n <= m, time complexity is o(n) and upper bound space complexity is o(m)
-//This is better than the o(n) time complexity and o(n*m) space complexity of the straightforward approach of memoizing all intermediate values --potentially a quadratic reduction in space usage for !(n << m). It's also obviously much better than the o(2^m) time and space complexity of the naive branching recursive approach.
+///////////////////////
+//// Post-Analysis ////
+///////////////////////
 
-//Creating a fully recursive version of this space optimal algorithm would be impossible with existing languages, given the loopy structure of the term dependencies. The language used would have to support a generalized directed graph function call structure with frame merging and splitting (rather than a standard stack function call tree structure with only splitting).
+// For grid (n,m) where n <= m, time complexity is o(n) and upper bound space complexity is o(m)
+// This is better than the o(n) time complexity and o(n*m) space complexity of the straightforward approach of memoizing all intermediate values --potentially a quadratic reduction in space usage for !(n << m). It's also obviously much better than the o(2^m) time and space complexity of the naive branching recursive approach.
 
-//Along similar lines, a purely functional version would be difficult without reverting back to o(n*m) space complexity by iterating over an array of "loops" number of arrays of max size "maxTerms". Would have to be able to parameterize the number of loops as a single number rather than as an outer array of arrays. Could use iterators that return new iterators? Same problem, would end up with a chain of n iterators that would have to be iterated upon n times to resolve; would need a loop in one form or another to iterate through them, or could use recursion in a language with tail recursion (but that again just converts it into a loop).
+// Creating a fully recursive version of this space optimal algorithm (instead of the above imperative, bottom-up implementation) would be impossible with existing languages, given the loopy structure of the term dependencies. The language used would have to support a generalized directed graph function call structure with frame merging and splitting (rather than a standard stack function call tree structure with only splitting).
+
+// Along similar lines, a purely functional version would be difficult without reverting back to o(n*m) space complexity by iterating over an array of "loops" number of arrays of max size "maxTerms". Would have to be able to parameterize the number of loops as a single number rather than as an outer array of arrays. Could use iterators that return new iterators? Same problem, would end up with a chain of n iterators that would have to be iterated upon n times to resolve; would need a loop in one form or another to iterate through them, or could use recursion in a language with tail recursion (but that again just converts it into a loop).
