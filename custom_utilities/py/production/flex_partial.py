@@ -1,3 +1,19 @@
+
+###############
+#### Notes ####
+###############
+
+'''
+
+'''
+
+# https://stackoverflow.com/a/66274908
+
+
+##############
+#### Code ####
+##############
+
 from functools import partial
 
 class bind(partial):

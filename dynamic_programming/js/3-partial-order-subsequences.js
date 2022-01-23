@@ -20,7 +20,7 @@
 //// Solution ////
 //////////////////
 
-// only works at the moment for number of arrays equal to 2, can be generalized; first string is the query string, second string is the test string
+// only works at the moment for number of arrays equal to 2, but can be generalized; first string is the query string, second string is the test string
 function subsequenceMatch(mode, ...args) {
 
   if( mode == 'large') {

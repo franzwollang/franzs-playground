@@ -1,4 +1,15 @@
-// pipe function that chains promises instead of functions
+///////////////
+//// Notes ////
+///////////////
+
+/*
+Pipe function that chains promises instead of functions.
+*/
+
+
+//////////////
+//// Code ////
+//////////////
 
 async function promisePipe( ...asyncTasks) {
   const starterPromise = Promise.resolve();

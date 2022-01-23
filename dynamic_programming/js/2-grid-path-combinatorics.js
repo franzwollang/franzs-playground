@@ -98,8 +98,8 @@ function optimalMemoize(dim1, dim2) {
   }
 
   const symmetric = (dim1 == dim2);
-
   const oneOff = ( Math.abs(dim1-dim2) == 1 )
+
   if ( oneOff ) {
     return optimalMemoize(dim1-1,dim2) + optimalMemoize(dim1,dim2-1);
   }

@@ -1,8 +1,22 @@
+///////////////
+//// Notes ////
+///////////////
+
+/*
+In case you need fine-grained control over the exponential backoff implementation, or need to implement it in a situation where it is not automatically provided.
+/*
+
+// https://github.com/softonic/axios-retry/issues/87
+
+
+//////////////
+//// Code ////
+//////////////
+
 const axios = require('axios');
 const axiosRetry = require('axios-retry')
 
 // exponential backoff on retries w/ customizable base interval
-// https://github.com/softonic/axios-retry/issues/87
 const baseInterval = 500; // milliseconds
 const retryDelay = (retryNumber = 0) => {
     const seconds = Math.pow(2, retryNumber) * baseInterval;

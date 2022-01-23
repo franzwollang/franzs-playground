@@ -1,8 +1,20 @@
-//flex_slice is a generalized version of vanilla Array.prototype.slice(); it preserves all behavior of vanilla slice if constant integer start and end indices are passed. However, it also allows passing in binary test functions for the start and/or end bounds that allow for dynamic selection of the returned sub-array.
+///////////////
+//// Notes ////
+///////////////
 
-const flex_slice = function(data, start=null, end=null) {
+/*
+flex_slice is a generalized version of vanilla Array.prototype.slice(); it preserves all behavior of vanilla slice if constant integer start and end indices are passed. However, it also allows passing in binary (two input value / boolean predicate) test functions for the start and/or end bounds that allow for dynamic selection of the returned sub-array.
+*/
 
-  //defaults
+
+//////////////
+//// Code ////
+//////////////
+
+
+const flex_slice = function(data, start = null, end = null) {
+
+  // defaults
   if( !start ){
     start = 0;
   }
@@ -10,19 +22,19 @@ const flex_slice = function(data, start=null, end=null) {
     end = data.length;
   }
 
-  //no magic numbers
+  // no magic numbers
   const starting = 0;
   const ending = 1;
   const fixed = 0;
   const dynamic = 1;
 
-  //declarations & initializations
+  // declarations & initializations
   let mode = [fixed, fixed];
   const length = data.length;
   let start_index, start_func, end_bound, end_func;
   let start_guard = false;
 
-  //identify type of start parameter; default to starting at zero; preserve negative index behavior of standard Array.prototype.slice()
+  // identify type of start parameter; default to starting at zero; preserve negative index behavior of standard Array.prototype.slice()
   if ( typeof(start) == "number" ) {
     if (start < 0) {
       start = length + 1 + start;
@@ -39,7 +51,7 @@ const flex_slice = function(data, start=null, end=null) {
     mode[starting] = fixed;
   }
 
-  //identify type of end parameter; default to end at length; preserve negative index behavior of standard Array.prototype.slice()
+  // identify type of end parameter; default to end at length; preserve negative index behavior of standard Array.prototype.slice()
   if ( typeof(end) == "number" ) {
     if (end < 0) {
       end = length - 1 + end;
@@ -171,5 +183,5 @@ const flex_slice = function(data, start=null, end=null) {
 }
 
 module.exports = {
-  flex_slice,
+  flex_slice
 };

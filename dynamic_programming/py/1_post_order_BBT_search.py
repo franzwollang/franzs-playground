@@ -4,6 +4,7 @@
 
 # You are given the height 'h' of a balanced binary tree. The nodes of the balanced binary tree are labeled in order using post-order traversal. You are then given a list of node labels in the tree and asked to return a list corresponding to the respective parent nodes for those labels, or '-1' if the node is the root node for the tree of that height.
 
+
 ##################
 #### Analysis ####
 ##################
@@ -13,6 +14,7 @@
 # Crucially, these patterns hold for all subtrees as well. The tricky part is that the subtrees are not equivalent to root trees of the same height, since the method of labelling is not invariant to the original tree size.
 
 # However, the differences between any two consecutive labels in the left boundary of the tree OR the left boundary of any subtree can be computed as a power of 2 relative to the level of the larger of the two nodes, i.e. for a tree of height 5 the root node is 31 and the next node in the left boundary is 15; the difference between 31 and 15 is 16 or 2**4; since the level of the root node (31) is 5, the difference can be computed as 2**(level-1)
+
 
 ##################
 #### Solution ####
@@ -57,6 +59,7 @@ def query_parents(h, q):
     # return parents of query nodes
     return [recursive_search(h, root_node, query_node) for query_node in q]
 
+
 ###############
 #### Tests ####
 ###############
@@ -66,6 +69,7 @@ print( query_parents(3, [1, 2, 4, 5, 3, 6, 7]) )
 
 print( query_parents(5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) )
 # --> [3, 3, 7, 6, 6, 7, 15, 10, 10, 14, 13, 13, 14, 15, 31]
+
 
 #######################
 #### Post-Analysis ####

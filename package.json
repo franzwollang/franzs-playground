@@ -1,7 +1,7 @@
 {
   "name": "franzs-playground",
   "version": "1.0.0",
-  "description": "Various programming challenges and exercises",
+  "description": "Various programming challenges, exercises, and personal projects",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

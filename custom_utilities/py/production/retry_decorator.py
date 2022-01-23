@@ -1,6 +1,23 @@
+###############
+#### Notes ####
+###############
+
+'''
+
+'''
+
+# http://www.saltycrane.com/blog/2009/11/trying-out-retry-decorator-python/
+# Original from: http://wiki.python.org/moin/PythonDecoratorLibrary#Retry
+
+
+##############
+#### Code ####
+##############
+
 import time
 import math
 from functools import wraps
+
 
 def retry(ExceptionToCheck, tries=4, delay=3, backoff=2, logger=None):
     """Retry calling the decorated function using an exponential backoff.

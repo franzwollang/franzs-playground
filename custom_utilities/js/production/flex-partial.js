@@ -1,7 +1,25 @@
-//partial application function that supports variadic, additive, and non-linear input partial application behaviors.
+///////////////
+//// Notes ////
+///////////////
+
+/*
+Partial application functions that support variadic, additive, auto, and/or non-sequential input partial application behaviors.
+*/
 
 
-//supports variadic and additive behaviors
+//////////////
+//// Code ////
+//////////////
+
+// standard partial with variadic and additive behaviors
+function partialApply(fn, ...args) {
+  return fn.bind(null, ...args);
+ }
+
+
+// https://medium.com/@jnkrtech/partial-function-application-in-javascript-and-flow-7f3ca87074fe
+
+// supports variadic, additive, and auto behaviors
 function autoPartial(fn) {
   const collect = (boundArgs, ...args) => {
     const collectedArgs = boundArgs.concat(args);
@@ -11,7 +29,8 @@ function autoPartial(fn) {
 }
 
 
-//supports non-linear argument input using an underscore '_' as a placeholder
+// supports variadic and auto behaviors
+// supports non-sequential argument input using an underscore '_' as a placeholder
 function partialFactory() {
   const hole = {};
 
@@ -36,3 +55,6 @@ function partialFactory() {
     }
   };
 }
+
+
+// Note to self: write a new version that supports variadic, additive, and non-sequential behaviors, but not auto; control over the timing of function application can be an important tool to have in some FP scenarios.

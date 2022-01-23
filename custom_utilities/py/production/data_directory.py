@@ -1,3 +1,16 @@
+###############
+#### Notes ####
+###############
+
+'''
+
+'''
+
+
+##############
+#### Code ####
+##############
+
 from collections import defaultdict, deque
 from functools import partial
 
@@ -8,6 +21,7 @@ class DataDirectory:
 
     **Not fully implemented**
     '''
+
     __slots__ = '_table_', 'list', 'dict', 'set', 'deque'
 
     def __init__(self, has_list = True, has_dict = False, has_set = False, has_deque = False):
