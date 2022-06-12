@@ -1,8 +1,20 @@
+/////////////////////////////
+//// Problem Explanation ////
+/////////////////////////////
+
 // find specific a word in a large list of sorted words
+
+//////////////////////
+//// Pre-Analysis ////
+//////////////////////
 
 // naive approach: go through the words one by one until you find the word your looking for. On average, this will take you looking through 1/2 of the list of words. Complexity is o(n).
 
 // better approach: take advantage of the fact that the list is sorted. Take the word that is "in the middle" of the list (cutting it in half), check if the word you're looking for would go before or after this word in sort order. Then take that half of the list, find "the middle word" of that half (cutting it in half again), repeat the process... until you find your word. The complexity is o(log(n)).
+
+//////////////////
+//// Solution ////
+//////////////////
 
 export function find(sortedList, query) {
 	const left = -1;
@@ -52,3 +64,11 @@ export function find(sortedList, query) {
 
 	return pointer;
 }
+
+///////////////
+//// Tests ////
+///////////////
+
+///////////////////////
+//// Post-Analysis ////
+///////////////////////
