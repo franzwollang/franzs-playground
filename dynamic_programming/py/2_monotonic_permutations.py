@@ -2,7 +2,7 @@
 
 ###
 
-### INCOMEPLETE SOLUTION ###
+### INCOMPLETE SOLUTION ###
 
 ###
 
