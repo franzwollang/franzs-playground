@@ -9,7 +9,9 @@ class GeoPoint(Point):
 
     def __init__(self, latitude=None, longitude=None, altitude=None):
         self.payload = None
-
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = altitude
 
 def to_radians(degrees):
     return degrees * (math.pi / 180)
@@ -20,7 +22,7 @@ def new_point_from_dist(point: GeoPoint, true_course=0, distance=0):
 
     Uses an Equilinear approximation that is accurate enough for short distances."""
 
-    if true_course == 0 and distance == 0:
+    if distance == 0:
         return point
 
     lat_displ = (distance * math.cos(true_course)) / 110.574e3
